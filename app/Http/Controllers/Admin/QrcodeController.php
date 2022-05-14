@@ -17,7 +17,7 @@ class QrcodeController extends Controller
     {
         $data['title']      = 'Posts';
         $data['toptitle']   = 'Posts';
-        $data['list']       = Qrcode::all();
+        $data['list']       = Qrcode::where('user_id', auth()->user()->id)->get();
         $data['qr']         = true;
 
         return view('admin.qrcode.index', $data);
