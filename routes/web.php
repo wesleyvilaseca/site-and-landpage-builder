@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PermissionRoleController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\QrcodeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\LoginController;
@@ -37,6 +38,20 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/posts/{id}/update', [PostController::class, 'update'])->name('post.update');
 
     Route::get('/posts/{id}/remove', [PostController::class, 'delete'])->name('post.remove');
+
+
+    /**
+     * QRCODE
+     */
+
+    Route::get('/qrcode', [QrcodeController::class, 'index'])->name('qrcode');
+    Route::get('/qrcode/new', [QrcodeController::class, 'create'])->name('qrcode.new');
+    Route::post('/qrcode/save', [QrcodeController::class, 'store'])->name('qrcode.save');
+
+    Route::get('/qrcode/{id}/edit', [QrcodeController::class, 'edit'])->name('qrcode.edit');
+    Route::post('/qrcode/{id}/update', [QrcodeController::class, 'update'])->name('qrcode.update');
+
+    Route::get('/qrcode/{id}/remove', [QrcodeController::class, 'delete'])->name('qrcode.remove');
 
     /**
      * roles

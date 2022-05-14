@@ -31,7 +31,7 @@
 
                     @can('qrcode_access')
                         <li class="{{ @$qr ? 'ativo' : '' }}">
-                            <a href="#">
+                            <a href="{{ route('qrcode') }}">
                                 <i class="fas fa-chart-bar"></i>
                                 <span>QrCode</span>
                             </a>
