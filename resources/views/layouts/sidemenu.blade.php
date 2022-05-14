@@ -20,47 +20,47 @@
                         </a>
                     </li>
 
-                    <li class="{{ @$roles ? 'ativo' : '' }}">
-                        <a href="{{ route('roles') }}">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Roles</span>
-                        </a>
-                    </li>
+                    @can('users')
+                        <li class="{{ @$users ? 'ativo' : '' }}">
+                            <a href="{{ route('users') }}">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Users</span>
+                            </a>
+                        </li>
+                    @endcan
 
-                    <li class="{{ @$permissions ? 'ativo' : '' }}">
-                        <a href="{{ route('permissions') }}">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Permissions</span>
-                        </a>
-                    </li>
+                    @can('qrcode_access')
+                        <li class="{{ @$qr ? 'ativo' : '' }}">
+                            <a href="#">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>QrCode</span>
+                            </a>
+                        </li>
+                    @endcan
 
-                    <li class="{{ @$users ? 'ativo' : '' }}">
-                        <a href="{{ route('users') }}">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Users</span>
-                        </a>
-                    </li>
+                    @can('permissions')
+                        <li class="sidebar-dropdown {{ @$perm ? 'active_side' : '' }}">
+                            <a>
+                                <i class="fas fa-chart-line"></i>
+                                <span>Permissões</span>
+                            </a>
+                            <div class="sidebar-submenu {{ @$perm ? 'd-block' : '' }}">
+                                <ul>
+                                    <li class="{{ @$roles ? 'ativo' : '' }}">
+                                        <a href="{{ route('roles') }}">Roles</a>
+                                    </li>
 
-                    <li class="{{ @$posts ? 'ativo' : '' }}">
-                        <a href="{{ route('posts') }}">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Posts</span>
-                        </a>
-                    </li>
+                                    <li class="{{ @$permissions ? 'ativo' : '' }}">
+                                        <a href="{{ route('permissions') }}">Permissões</a>
+                                    </li>
 
-                    <li class="sidebar-dropdown {{ @$relatorio ? 'active_side' : '' }}">
-                        <a>
-                            <i class="fas fa-chart-line"></i>
-                            <span>Relatório</span>
-                        </a>
-                        <div class="sidebar-submenu {{ @$relatorio ? 'd-block' : '' }}">
-                            <ul>
-                                <li class="">
-                                    <a href="#">Painel</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
+                                    {{-- <li class="{{ @$posts ? 'ativo' : '' }}">
+                                    <a href="{{ route('posts') }}">Posts</a>
+                                </li> --}}
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
 
                     <li class="">
                         <a href="{{ route('logout') }}">

@@ -17,6 +17,7 @@ class RoleController extends Controller
         $data['toptitle']   = 'Roles';
         $data['list']       = Role::all();
         $data['roles']      = true;
+        $data['perm']      = true;
 
         return view('admin.roles.index', $data);
     }

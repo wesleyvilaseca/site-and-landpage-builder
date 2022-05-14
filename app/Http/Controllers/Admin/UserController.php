@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use function Psy\debug;
+
 class UserController extends Controller
 {
     public function index()
@@ -26,7 +28,7 @@ class UserController extends Controller
     {
         $data['title']      = 'New Post';
         $data['toptitle']   = 'New Post';
-        $data['roles_list']      = Role::all();
+        $data['roles_list'] = Role::all();
         $data['users']      = true;
         $data['action']     = route('user.save');
 
@@ -40,13 +42,13 @@ class UserController extends Controller
             return redirect()->back();
         }
 
-        $data['title']      = 'Edit user ' . $user->title;
-        $data['toptitle']   = 'Edit user ' . $user->title;
-        $data['roles_list']      = Role::all();
-        $data['users']      = true;
-        $data['user']       = $user;
-        $data['role_user'] = $user->roles->first()->id;
-        $data['action']     = route('user.update', $user->id);
+        $data['title']              = 'Edit user ' . $user->title;
+        $data['toptitle']           = 'Edit user ' . $user->title;
+        $data['roles_list']         = Role::all();
+        $data['users']              = true;
+        $data['user']               = $user;
+        $data['role_user']          = @$user->roles->first() ? $user->roles->first()->id : null;
+        $data['action']             = route('user.update', $user->id);
 
         return view('admin.users.create', $data);
     }

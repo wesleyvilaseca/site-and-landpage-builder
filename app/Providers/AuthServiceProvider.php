@@ -37,5 +37,9 @@ class AuthServiceProvider extends ServiceProvider
             if ($user->hasAnyRoles('admin'))
                 return true;
         });
+
+        Gate::before(function (User $user) {
+            if ($user->isAdmin()) return true;
+        });
     }
 }

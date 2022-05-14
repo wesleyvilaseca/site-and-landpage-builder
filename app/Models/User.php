@@ -60,4 +60,9 @@ class User extends Authenticatable
         
         return $this->roles->contains('name', $roles);
     }
+
+    public function isAdmin(): bool
+    {
+        return in_array($this->email, config('acl.admins'));
+    }
 }
