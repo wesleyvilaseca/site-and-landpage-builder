@@ -29,11 +29,20 @@
                         </li>
                     @endcan
 
-                    @can('qrcode_access')
+                    @can('anotacoes_access')
                         <li class="{{ @$qr ? 'ativo' : '' }}">
                             <a href="{{ route('qrcode') }}">
                                 <i class="fas fa-chart-bar"></i>
                                 <span>QrCode</span>
+                            </a>
+                        </li>
+                    @endcan
+
+                    @can('anotacoes_access')
+                        <li class="{{ @$anot ? 'ativo' : '' }}">
+                            <a href="{{ route('anotation') }}">
+                                <i class="fas fa-chart-bar"></i>
+                                <span>Anotações</span>
                             </a>
                         </li>
                     @endcan

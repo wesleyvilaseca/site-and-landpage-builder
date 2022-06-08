@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AnotationController;
 use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PermissionRoleController;
@@ -39,6 +40,18 @@ Route::middleware(['auth'])->group(function() {
 
     Route::get('/posts/{id}/remove', [PostController::class, 'delete'])->name('post.remove');
 
+    /**
+     * anotations
+     */
+
+    Route::get('/anotation', [AnotationController::class, 'index'])->name('anotation');
+    Route::get('/anotation/new', [AnotationController::class, 'create'])->name('anotation.new');
+    Route::post('/anotation/save', [AnotationController::class, 'store'])->name('anotation.save');
+
+    Route::get('/anotation/{id}/edit', [AnotationController::class, 'edit'])->name('anotation.edit');
+    Route::post('/anotation/{id}/update', [AnotationController::class, 'update'])->name('anotation.update');
+
+    Route::get('/anotation/{id}/remove', [AnotationController::class, 'delete'])->name('anotation.remove');
 
     /**
      * QRCODE
