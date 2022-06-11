@@ -20,7 +20,7 @@
                         </a>
                     </li>
 
-                    @can('users')
+                    @can('user_access')
                         <li class="{{ @$users ? 'ativo' : '' }}">
                             <a href="{{ route('users') }}">
                                 <i class="fas fa-chart-bar"></i>
@@ -29,7 +29,7 @@
                         </li>
                     @endcan
 
-                    @can('anotacoes_access')
+                    @can('qr_access')
                         <li class="{{ @$qr ? 'ativo' : '' }}">
                             <a href="{{ route('qrcode') }}">
                                 <i class="fas fa-chart-bar"></i>
