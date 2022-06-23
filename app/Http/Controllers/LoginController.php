@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -12,6 +13,10 @@ class LoginController extends Controller
     //
     public function index()
     {
+        if (Auth::check()) {
+            return Redirect::route('painel');
+        }
+
         $data['title'] = 'Login';
         return view('auth.login', $data);
     }
@@ -34,7 +39,8 @@ class LoginController extends Controller
         return Redirect::route('painel');
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::logout();
         return Redirect::route('login');
     }
