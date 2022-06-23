@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Anotation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-
-use function Psy\debug;
+use App\Supports\support_cripto\Cripto;
 
 class AnotationController extends Controller
 {
@@ -38,7 +37,10 @@ class AnotationController extends Controller
             ['user_id', '=', auth()->user()->id]
         ])->first();
 
+
         if (!$anotation) redirect()->route('anoation');
+
+        $anotation->anotation = is_base64($anotation->anotation) ? Cripto::decrypt($anotation->anotation) : $anotation->anotation;
 
         $data['title']      = 'Editar Anotação ' . $anotation->title;
         $data['toptitle']   = 'Editar Anotação ' . $anotation->title;
@@ -63,7 +65,7 @@ class AnotationController extends Controller
         $result = Anotation::create([
             'title' => $request->title,
             'user_id' => auth()->user()->id,
-            'anotation' => $request->anotation
+            'anotation' => Cripto::encrypt($request->anotation)
         ]);
 
         if (!$result) {
@@ -94,7 +96,7 @@ class AnotationController extends Controller
             ['user_id', '=', auth()->user()->id]
         ])->update([
             'title'         => $request->title,
-            'anotation'     => $request->anotation
+            'anotation'     => Cripto::encrypt($request->anotation)
         ]);
 
         if (!$result) {

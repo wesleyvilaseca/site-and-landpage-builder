@@ -20,4 +20,10 @@
 
         </form>
     </div>
+
+    <div class="text-right">
+        <small>
+            os dados são armazenados com criptografia
+        </small>
+    </div>
 @stop

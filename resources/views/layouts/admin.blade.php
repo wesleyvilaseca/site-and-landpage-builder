@@ -85,6 +85,8 @@
     <!--meus js-->
     <script src="{{ asset('assets-admin/js/plugins/sidebar/sidebar.js') }}"></script>
 
+    @yield('js')
+
 </body>
 
 </html>

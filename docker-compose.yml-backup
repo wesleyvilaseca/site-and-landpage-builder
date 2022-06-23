@@ -1,0 +1,56 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7.22
+    container_name: codevilafood-db
+    restart: always
+    ports:
+        - "3308:3306"
+    environment:
+      MYSQL_DATABASE: 'codevilafood'
+      MYSQL_USER: 'root'
+      MYSQL_ROOT_PASSWORD: '12345678'
+    networks:
+      - app-network
+  app:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: codevilafood-app
+    volumes: 
+      - ./:/var/www/html
+    ports:
+      - 3000:3000
+    networks:
+      - app-network
+    depends_on:
+      - db
+    links: 
+      - db
+networks:
+  app-network:
+    driver: bridge
+
+
+
+
+
+
+#para conectar na base local do pc
+
+#version: '3'
+#services:
+#  app:
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
+#    container_name: codevilafood
+#    volumes:
+#      - ./:/var/www/html
+#    ports:
+#      - 3000:3000
+#    network_mode: "host"
+
+#networks:
+#app-network:
+# driver: bridge
