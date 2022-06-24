@@ -47,6 +47,30 @@
                         </li>
                     @endcan
 
+                    @can('customers')
+                        <li class="sidebar-dropdown {{ @$cli ? 'active_side' : '' }}">
+                            <a>
+                                <i class="fas fa-user-tie"></i>
+                                <span>Clientes</span>
+                            </a>
+                            <div class="sidebar-submenu {{ @$cli ? 'd-block' : '' }}">
+                                <ul>
+                                    @can('customers_type_access')
+                                        <li class="{{ @$types_cli ? 'ativo' : '' }}">
+                                            <a href="{{ route('customers_types') }}">Tipos de clientes</a>
+                                        </li>
+                                    @endcan
+
+                                    @can('customers_access')
+                                        <li class="{{ @$clien ? 'ativo' : '' }}">
+                                            <a href="{{ route('customers') }}">Clientes</a>
+                                        </li>
+                                    @endcan
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
+
                     @can('permissions')
                         <li class="sidebar-dropdown {{ @$perm ? 'active_side' : '' }}">
                             <a>
@@ -62,10 +86,6 @@
                                     <li class="{{ @$permissions ? 'ativo' : '' }}">
                                         <a href="{{ route('permissions') }}">Permissões</a>
                                     </li>
-
-                                    {{-- <li class="{{ @$posts ? 'ativo' : '' }}">
-                                    <a href="{{ route('posts') }}">Posts</a>
-                                </li> --}}
                                 </ul>
                             </div>
                         </li>
@@ -90,5 +110,4 @@
     .ativo a i {
         color: #16c7ff;
     }
-
 </style>

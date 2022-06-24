@@ -40,7 +40,7 @@
 
         <main class="page-content">
             <div class="container-fluid">
-                @include('includes.alerts')
+                @include('layouts.alerts')
                 @if (@isset($toptitle))
                     <h5>{{ $toptitle }}</h5>
                 @endif

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AnotationController;
+use App\Http\Controllers\Admin\CustomerController;
+use App\Http\Controllers\Admin\CustomerTypeController;
 use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PermissionRoleController;
@@ -28,7 +30,7 @@ Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/',  [LoginController::class, 'index'])->name('inicio');
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
     Route::get('/painel', [PainelController::class, 'index'])->name('painel');
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts');
@@ -65,6 +67,32 @@ Route::middleware(['auth'])->group(function() {
     Route::post('/qrcode/{id}/update', [QrcodeController::class, 'update'])->name('qrcode.update');
 
     Route::get('/qrcode/{id}/remove', [QrcodeController::class, 'delete'])->name('qrcode.remove');
+
+    /**
+     * customers_type
+     */
+
+    Route::get('/customers-types', [CustomerTypeController::class, 'index'])->name('customers_types');
+    Route::get('/customers-type/new', [CustomerTypeController::class, 'create'])->name('customers_type.new');
+    Route::post('/customers-type/save', [CustomerTypeController::class, 'store'])->name('customers_type.save');
+
+    Route::get('/customers-type/{id}/edit', [CustomerTypeController::class, 'edit'])->name('customers_type.edit');
+    Route::post('/customers-type/{id}/update', [CustomerTypeController::class, 'update'])->name('customers_type.update');
+
+    Route::get('/customers-type/{id}/remove', [CustomerTypeController::class, 'delete'])->name('customers_type.remove');
+
+    /**
+     * customers
+     */
+
+    Route::get('/customerss', [CustomerController::class, 'index'])->name('customers');
+    Route::get('/customers/new', [CustomerController::class, 'create'])->name('customers.new');
+    Route::post('/customers/save', [CustomerController::class, 'store'])->name('customers.save');
+
+    Route::get('/customers/{id}/edit', [CustomerController::class, 'edit'])->name('customers.edit');
+    Route::post('/customers/{id}/update', [CustomerController::class, 'update'])->name('customers.update');
+
+    Route::get('/customers/{id}/remove', [CustomerController::class, 'delete'])->name('customers.remove');
 
     /**
      * roles
