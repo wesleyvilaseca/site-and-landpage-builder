@@ -12,8 +12,8 @@ class CustomerTypeController extends Controller
 {
     public function index()
     {
-        $data['title']      = 'Anotacoes';
-        $data['toptitle']   = 'Anotacoes';
+        $data['title']      = 'Tipos de clientes';
+        $data['toptitle']   = 'Tipos de clientes';
         $data['list']       = CustomerType::where('user_id', auth()->user()->id)->get();
         $data['cli']        = true;
         $data['types_cli']  = true;
@@ -23,8 +23,8 @@ class CustomerTypeController extends Controller
 
     public function create()
     {
-        $data['title']      = 'Novo tipo de usuário';
-        $data['toptitle']   = 'Novo tipo de usuário';
+        $data['title']      = 'Novo tipo de cliente';
+        $data['toptitle']   = 'Novo tipo de cliente';
         $data['action']     = route('customers_type.save');
         $data['cli']        = true;
         $data['types_cli']  = true;

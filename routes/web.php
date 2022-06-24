@@ -85,7 +85,7 @@ Route::middleware(['auth'])->group(function () {
      * customers
      */
 
-    Route::get('/customerss', [CustomerController::class, 'index'])->name('customers');
+    Route::get('/customers', [CustomerController::class, 'index'])->name('customers');
     Route::get('/customers/new', [CustomerController::class, 'create'])->name('customers.new');
     Route::post('/customers/save', [CustomerController::class, 'store'])->name('customers.save');
 
