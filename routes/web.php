@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\WebSiteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\WebsiteController as ControllersWebsiteController;
 use Illuminate\Support\Facades\Route;
 
@@ -162,6 +163,8 @@ Route::post('/register',    [RegisterController::class, 'create'])->name('regist
 //     'uses' => 'App\Http\Controllers\WebsiteController@uri',
 //     'as' => 'page',
 // ])->where('uri', '.*');
+
+Route::any('/busca', [SearchController::class, 'search']);
 
 Route::any('/', [ControllersWebsiteController::class, 'uri']);
 Route::any('/{uri}', [ControllersWebsiteController::class, 'uri']);

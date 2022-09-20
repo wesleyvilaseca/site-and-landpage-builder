@@ -18,6 +18,6 @@ return [
             "type" => "yes_no",
             "label" => "This selector is required",
             "value" => "0",
-        ],
+        ]
     ]
 ];
