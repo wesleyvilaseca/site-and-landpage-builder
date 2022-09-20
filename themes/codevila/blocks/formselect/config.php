@@ -18,6 +18,14 @@ return [
             "type" => "yes_no",
             "label" => "This selector is required",
             "value" => "0",
+        ],
+        "gallery" => [
+            "type" => "select",
+            "label" => "gallery",
+            "options" => [
+                ['value' => 'select_layout', 'label' => 'Select Layout'],
+                ['value' => 'select_layout2', 'label' => 'Select Layout2'],
+            ]
         ]
     ]
 ];
