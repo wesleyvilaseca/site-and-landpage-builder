@@ -47,6 +47,30 @@
                         </li>
                     @endcan
 
+                    @can('website')
+                        <li class="sidebar-dropdown {{ @$web ? 'active_side' : '' }}">
+                            <a>
+                                <i class="fas fa-layer-group"></i>
+                                 <span>Sites</span>
+                            </a>
+                            <div class="sidebar-submenu {{ @$web ? 'd-block' : '' }}">
+                                <ul>
+                                    @can('website_access')
+                                        <li class="{{ @$webs ? 'ativo' : '' }}">
+                                            <a href="{{ route('websites') }}">Sites</a>
+                                        </li>
+                                    @endcan
+
+                                    {{-- @can('customers_access')
+                                    <li class="{{ @$clien ? 'ativo' : '' }}">
+                                        <a href="{{ route('customers') }}">Clientes</a>
+                                    </li>
+                                @endcan --}}
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
+
                     @can('customers')
                         <li class="sidebar-dropdown {{ @$cli ? 'active_side' : '' }}">
                             <a>

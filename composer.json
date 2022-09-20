@@ -12,6 +12,7 @@
         "chillerlan/php-qrcode": "^4.3",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "hansschouten/laravel-pagebuilder": "^0.22.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5"

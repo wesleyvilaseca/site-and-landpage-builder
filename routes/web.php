@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AnotationController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CustomerTypeController;
+use App\Http\Controllers\Admin\PageBuilderController;
 use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PermissionRoleController;
@@ -10,8 +11,10 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\QrcodeController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\WebSiteController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\WebsiteController as ControllersWebsiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +31,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
-Route::get('/',  [LoginController::class, 'index'])->name('inicio');
+// Route::get('/',  [LoginController::class, 'index'])->name('inicio');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/painel', [PainelController::class, 'index'])->name('painel');
@@ -136,11 +139,32 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
     Route::post('/user/{id}/update', [UserController::class, 'update'])->name('user.update');
     Route::get('/user/{id}/remove', [UserController::class, 'delete'])->name('user.remove');
+
+    /**
+     * websites
+     */
+    Route::get('/website', [WebSiteController::class, 'index'])->name('websites');
+    Route::get('/website/{siteId}', [WebSiteController::class, 'pages'])->name('pages');
+
+    /**
+     * page builder
+     */
+    Route::any('/pages/{id}/build', [PageBuilderController::class, 'build'])->name('pagebuilder.build');
+    Route::any('/pages/build', [PageBuilderController::class, 'build']);
+    Route::any('/admin/pages', [PageBuilderController::class, 'index']);
 });
 
 
 Route::get('/register',     [RegisterController::class, 'index'])->name('register');
 Route::post('/register',    [RegisterController::class, 'create'])->name('register.create');
+
+// Route::any('{uri}', [
+//     'uses' => 'App\Http\Controllers\WebsiteController@uri',
+//     'as' => 'page',
+// ])->where('uri', '.*');
+
+Route::any('/', [ControllersWebsiteController::class, 'uri']);
+Route::any('/{uri}', [ControllersWebsiteController::class, 'uri']);
 
 // Route::get('/', function () {
 //     return view('welcome');
