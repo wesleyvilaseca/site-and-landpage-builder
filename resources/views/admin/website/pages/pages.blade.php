@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         @can('page_create')
-            <a href="#" class="btn btn-primary btn-sm">ADD</a>
+            <a href="{{ route('pages.create', $website->id) }}" class="btn btn-primary btn-sm">ADD</a>
         @endcan
 
         <table class="table" id="customers-table">
@@ -15,16 +15,24 @@
             <tbody>
                 @forelse ($list as $page)
                     <tr>
-                        <td>{{ $page->name }}</td>
+                        <td>{{ $page->name }}
+                            @if ($page->homepage == 1)
+                                <i class="fas fa-star" style="color: #FFD700"></i>
+                            @endif
+                        </td>
                         <td>
                             @can('page.edit', $page)
-                                <a href="{{ route('pagebuilder.build', $page->id)}}"
-                                    class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ route('pages.edit', [$website->id, $page->id]) }}"
+                                    class="btn btn-sm btn-info">Editar</a>
+                            @endcan
+
+                            @can('page.editlayout', $page)
+                                <a href="{{ route('pagebuilder.build', $page->id) }}?site_id={{ $website->id }}"
+                                    class="btn btn-sm btn-warning">Editar layout</a>
                             @endcan
 
                             @can('page.delete', $page)
-                                <a href="#"
-                                    class="btn btn-sm btn-danger">Remove</a>
+                                <a href="{{ route('pages.delete', [$website->id, $page->id]) }}" onclick="return deleteSite('{{$page->name}}');" class="btn btn-sm btn-danger">Remove</a>
                             @endcan
                         </td>
                     </tr>
@@ -44,5 +52,10 @@
         $(document).ready(function() {
             $('#customers-table').DataTable();
         });
+
+        function deleteSite(title) {
+                if (!confirm(`Tem certeza que deseja remover a página ${title}?`))
+                    event.preventDefault();
+            }
     </script>
 @stop

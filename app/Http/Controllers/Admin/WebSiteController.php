@@ -94,18 +94,4 @@ class WebSiteController extends Controller
 
         return redirect()->route('websites')->with('success', 'WebSite removido com sucesso');
     }
-
-    /**
-     * pages website
-     */
-    public function pages($website_id)
-    {
-        $data['title']      = 'Anotacoes';
-        $data['toptitle']   = 'Anotacoes';
-        $data['list']       = Page::where(['website_id' => $website_id])->get();
-        $data['web']        = true;
-        $data['webs']       = true;
-
-        return view('admin.website.pages', $data);
-    }
 }

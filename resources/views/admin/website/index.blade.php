@@ -52,6 +52,8 @@
                                 <a href="{{ route('pages', $website->id) }}" class="btn btn-sm btn-primary">Pages</a>
                             @endcan
 
+                            <a href="{{ $website->site_url }}" class="btn btn-sm btn-success" target="_blanck"><i class="fas fa-eye"></i> Visualizar</a>
+
                         </td>
                     </tr>
                     @empty

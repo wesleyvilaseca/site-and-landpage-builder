@@ -63,8 +63,6 @@
                     <hr>
                 @endif
 
-                <hr>
-
                 @yield('content')
 
             </div>

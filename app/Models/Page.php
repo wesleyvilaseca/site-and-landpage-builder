@@ -10,5 +10,5 @@ class Page extends Model
     use HasFactory;
 
     protected $table = 'pages';
-    protected $fillable = ['website_id', 'name', 'layout', 'data'];
+    protected $fillable = ['website_id', 'name', 'layout', 'route', 'homepage', 'data'];
 }

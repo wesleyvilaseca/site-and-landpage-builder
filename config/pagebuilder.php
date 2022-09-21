@@ -94,7 +94,7 @@ return [
         'class' => PHPageBuilder\Modules\GrapesJS\PageBuilder::class,
         'url' => '/pages/build',
         'actions' => [
-            'back' => '/admin/pages'
+            'back' => back_route_pagebuilder()
         ]
     ],
 

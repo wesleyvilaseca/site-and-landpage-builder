@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AnotationController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CustomerTypeController;
 use App\Http\Controllers\Admin\PageBuilderController;
+use App\Http\Controllers\Admin\PagesController;
 use App\Http\Controllers\Admin\PainelController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\PermissionRoleController;
@@ -151,7 +152,16 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/website/{id}/edit',   [WebSiteController::class, 'update'])->name('websites.update');
     Route::get('/website/{id}/delete', [WebSiteController::class, 'delete'])->name('websites.delete');
 
-    Route::get('/website/{siteId}',     [WebSiteController::class, 'pages'])->name('pages');
+
+    /**
+     * pages admin
+     */
+    Route::get('/website/{siteId}',            [PagesController::class, 'index'])->name('pages');
+    Route::get('/website/{siteId}/create',     [PagesController::class, 'create'])->name('pages.create');
+    Route::post('/website/{siteId}/create',     [PagesController::class, 'store'])->name('pages.store');
+    Route::get('/website/{siteId}/edit/{id}',     [PagesController::class, 'edit'])->name('pages.edit');
+    Route::post('/website/{siteId}/edit/{id}',     [PagesController::class, 'update'])->name('pages.update');
+    Route::get('/website/{siteId}/delete/{id}',     [PagesController::class, 'delete'])->name('pages.delete');
 
     /**
      * page builder
