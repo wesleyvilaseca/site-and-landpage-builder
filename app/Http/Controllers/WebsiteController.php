@@ -16,9 +16,15 @@ class WebsiteController extends Controller
      */
     public function uri(Request $request, $uri = '')
     {
-        // $uri = 'teste';
-        $website = WebSite::where('site_url', env('APP_URL'))->first();
-        $page = Page::where(['website_id' => $website->id, 'route' => $uri])->first();
+        $url = request()->getHttpHost();
+
+        $website = WebSite::where('site_url', 'http://' . $url)->orWhere('site_url', 'https://' . $url)->first();
+
+        if (!$uri) {
+            $page = Page::where(['website_id' => $website->id, 'homepage' => 1])->first();
+        } else {
+            $page = Page::where(['website_id' => $website->id, 'route' => $uri])->first();
+        }
 
         $theme = new Theme(config('pagebuilder.theme'), config('pagebuilder.theme.active_theme'));
         $page = (new PageRepository)->findWithId($page->id);

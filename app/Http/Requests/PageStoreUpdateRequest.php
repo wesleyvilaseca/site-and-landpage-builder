@@ -24,7 +24,7 @@ class PageStoreUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ["required", "max:500", "unique:pages,name,{$this->id}"],
+            'name' => ["required", "max:500", "unique:pages,name,{$this->id},id,website_id,{$this->website_id}"],
         ];
     }
 }

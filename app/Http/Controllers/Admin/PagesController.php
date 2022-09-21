@@ -84,7 +84,7 @@ class PagesController extends Controller
 
         $data = $request->except(['_token']);
         $data['user_id'] = auth()->user()->id;
-        $data['route'] =  Str::slug($request->title);
+        $data['route'] =  Str::slug($request->name);
         $data['website_id'] = $website->id;
 
         $hashomepage = Page::where(['website_id' => $website->id, 'homepage' => 1])->first();
@@ -108,7 +108,7 @@ class PagesController extends Controller
         if (!$website || !$page) return redirect()->back()->with('error', 'operação não autorizada');
 
         $data = $request->except(['_token']);
-        $data['route'] =  Str::slug($request->title);
+        $data['route'] =  Str::slug($request->name);
 
         $hashomepage = Page::where(['website_id' => $website->id, 'homepage' => 1])->first();
         if ($hashomepage and $request->homepage == 1) {
