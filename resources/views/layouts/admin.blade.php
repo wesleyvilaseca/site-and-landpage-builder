@@ -48,13 +48,13 @@
                     <div id="breadcrumb" class="mt-2">
                         <ol class="breadcrumb">
                             @foreach ($breadcrumb as $bread)
-                                @if ($bread->active)
+                                @if (@$bread->active)
                                     <li class="breadcrumb-item active">
-                                        {{ $bread->title }}
+                                        {{ @$bread->title }}
                                     </li>
                                 @else
                                     <li class="breadcrumb-item">
-                                        <a href="{{ $bread->route }}">{{ $bread->title }}</a>
+                                        <a href="{{ @$bread->route }}">{{ @$bread->title }}</a>
                                     </li>
                                 @endif
                             @endforeach

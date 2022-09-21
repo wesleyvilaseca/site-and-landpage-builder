@@ -18,7 +18,11 @@ class CreateWebSitesTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->string('title', 200);
             $table->string('site_url', 400);
+            $table->integer('status')->default(0);
+            $table->integer('https')->default(0);
             $table->timestamps();
+
+            // $table->enum('is_approved', array('0','1'))->default('0')->change();
 
             $table->foreign('user_id')
                 ->references('id')

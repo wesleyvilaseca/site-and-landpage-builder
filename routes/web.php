@@ -144,8 +144,14 @@ Route::middleware(['auth'])->group(function () {
     /**
      * websites
      */
-    Route::get('/website', [WebSiteController::class, 'index'])->name('websites');
-    Route::get('/website/{siteId}', [WebSiteController::class, 'pages'])->name('pages');
+    Route::get('/website',              [WebSiteController::class, 'index'])->name('websites');
+    Route::get('/website/create',       [WebSiteController::class, 'create'])->name('websites.create');
+    Route::post('/website/create',      [WebSiteController::class, 'store'])->name('websites.store');
+    Route::get('/website/{id}/edit',    [WebSiteController::class, 'edit'])->name('websites.edit');
+    Route::post('/website/{id}/edit',   [WebSiteController::class, 'update'])->name('websites.update');
+    Route::get('/website/{id}/delete', [WebSiteController::class, 'delete'])->name('websites.delete');
+
+    Route::get('/website/{siteId}',     [WebSiteController::class, 'pages'])->name('pages');
 
     /**
      * page builder
