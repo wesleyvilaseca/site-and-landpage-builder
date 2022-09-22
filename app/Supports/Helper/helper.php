@@ -27,3 +27,8 @@ function back_route_pagebuilder()
     $route = '/settings/website/' . $id;
     return $route;
 }
+
+function get_site_url()
+{
+    return url('/');
+}
