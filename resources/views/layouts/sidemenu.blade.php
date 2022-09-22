@@ -15,7 +15,7 @@
                     </li>
                     <li class="{{ @$home ? 'ativo' : '' }}">
                         <a href="{{ route('painel') }}">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span>Home</span>
                         </a>
                     </li>
@@ -23,7 +23,7 @@
                     @can('user_access')
                         <li class="{{ @$users ? 'ativo' : '' }}">
                             <a href="{{ route('users') }}">
-                                <i class="fas fa-chart-bar"></i>
+                                <i class="fas fa-users"></i>
                                 <span>Users</span>
                             </a>
                         </li>
@@ -32,7 +32,7 @@
                     @can('qr_access')
                         <li class="{{ @$qr ? 'ativo' : '' }}">
                             <a href="{{ route('qrcode') }}">
-                                <i class="fas fa-chart-bar"></i>
+                                <i class="fas fa-qrcode"></i>
                                 <span>QrCode</span>
                             </a>
                         </li>
@@ -41,7 +41,7 @@
                     @can('anotacoes_access')
                         <li class="{{ @$anot ? 'ativo' : '' }}">
                             <a href="{{ route('anotation') }}">
-                                <i class="fas fa-chart-bar"></i>
+                                <i class="far fa-sticky-note"></i>
                                 <span>Anotações</span>
                             </a>
                         </li>
@@ -51,7 +51,7 @@
                         <li class="sidebar-dropdown {{ @$web ? 'active_side' : '' }}">
                             <a>
                                 <i class="fas fa-layer-group"></i>
-                                 <span>Sites</span>
+                                <span>Sites</span>
                             </a>
                             <div class="sidebar-submenu {{ @$web ? 'd-block' : '' }}">
                                 <ul>
@@ -98,7 +98,7 @@
                     @can('permissions')
                         <li class="sidebar-dropdown {{ @$perm ? 'active_side' : '' }}">
                             <a>
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-user-lock"></i>
                                 <span>Permissões</span>
                             </a>
                             <div class="sidebar-submenu {{ @$perm ? 'd-block' : '' }}">

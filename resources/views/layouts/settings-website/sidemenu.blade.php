@@ -17,16 +17,60 @@
                     </li>
                     <li class="{{ @$h_settings ? 'ativo' : '' }}">
                         <a href="{{ route('websites.settings') }}">
-                            <i class="fas fa-chart-bar"></i>
+                            <i class="fas fa-tachometer-alt"></i>
                             <span>Dashboard</span>
                         </a>
                     </li>
                     @can('pages_access')
                         <li class="{{ @$pag ? 'ativo' : '' }}">
                             <a href="{{ route('pages', session()->get('website_id')) }}">
-                                <i class="fas fa-chart-bar"></i>
+                                <i class="far fa-file-alt"></i>
                                 <span>Páginas</span>
                             </a>
+                        </li>
+                    @endcan
+
+                    @can('layout_access')
+                        <li class="sidebar-dropdown {{ @$lay ? 'active_side' : '' }}">
+                            <a>
+                                <i class="fas fa-object-group"></i>
+                                <span>Layout</span>
+                            </a>
+                            <div class="sidebar-submenu {{ @$lay ? 'd-block' : '' }}">
+                                <ul>
+                                    <li class="{{ @$them ? 'ativo' : '' }}">
+                                        <a href="#">Tema</a>
+                                    </li>
+
+                                    <li class="{{ @$wid ? 'ativo' : '' }}">
+                                        <a href="#">Meus Widgets</a>
+                                    </li>
+
+                                    <li class="{{ @$nov_lay ? 'ativo' : '' }}">
+                                        <a href="#">Adicionar novo</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    @endcan
+
+                    @can('modules_access')
+                        <li class="sidebar-dropdown {{ @$mod ? 'active_side' : '' }}">
+                            <a>
+                                <i class="fab fa-buromobelexperte"></i>
+                                <span>Modulos</span>
+                            </a>
+                            <div class="sidebar-submenu {{ @$mod ? 'd-block' : '' }}">
+                                <ul>
+                                    <li class="{{ @$meu ? 'ativo' : '' }}">
+                                        <a href="#">Modulos Ativos</a>
+                                    </li>
+
+                                    <li class="{{ @$nov ? 'ativo' : '' }}">
+                                        <a href="#">Adicionar novo</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                     @endcan
                 </ul>
