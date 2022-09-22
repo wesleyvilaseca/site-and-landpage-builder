@@ -92,7 +92,7 @@ return [
      */
     'pagebuilder' => [
         'class' => PHPageBuilder\Modules\GrapesJS\PageBuilder::class,
-        'url' => '/pages/build',
+        'url' => '/settings/pages/build',
         'actions' => [
             'back' => back_route_pagebuilder()
         ]

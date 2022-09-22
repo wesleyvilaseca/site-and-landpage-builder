@@ -152,23 +152,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/website/{id}/edit',   [WebSiteController::class, 'update'])->name('websites.update');
     Route::get('/website/{id}/delete', [WebSiteController::class, 'delete'])->name('websites.delete');
 
-
-    /**
-     * pages admin
-     */
-    Route::get('/website/{siteId}',            [PagesController::class, 'index'])->name('pages');
-    Route::get('/website/{siteId}/create',     [PagesController::class, 'create'])->name('pages.create');
-    Route::post('/website/{siteId}/create',     [PagesController::class, 'store'])->name('pages.store');
-    Route::get('/website/{siteId}/edit/{id}',     [PagesController::class, 'edit'])->name('pages.edit');
-    Route::post('/website/{siteId}/edit/{id}',     [PagesController::class, 'update'])->name('pages.update');
-    Route::get('/website/{siteId}/delete/{id}',     [PagesController::class, 'delete'])->name('pages.delete');
-
-    /**
-     * page builder
-     */
-    Route::any('/pages/{id}/build', [PageBuilderController::class, 'build'])->name('pagebuilder.build');
-    Route::any('/pages/build', [PageBuilderController::class, 'build']);
-    Route::any('/admin/pages', [PageBuilderController::class, 'index']);
 });
 
 

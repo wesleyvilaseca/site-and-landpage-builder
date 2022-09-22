@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.settings-website.theme')
 @section('content')
     <div class="container-fluid">
         <form action="{{ $action }}" method="post">

@@ -12,7 +12,6 @@
                     <th scope="col">Url</th>
                     <th scope="col">Status</th>
                     <th scope="col">Action</th>
-                    <th>#</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,32 +39,20 @@
                             @endswitch
                         </td>
                         <td>
-                            @can('website.access', $website)
+                            @can('website.edit', $website)
                                 <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             @endcan
 
                             @can('website.delete', $website)
-                                <a href="{{ route('websites.delete', $website->id) }}"
-                                    onclick="return deleteSite('{{ $website->title }}');"
-                                    class="btn
+                                <a href="{{ route('websites.delete', $website->id) }}" onclick="return deleteSite('{{$website->title}}');" class="btn
                                     btn-sm btn-danger">Remove</a>
                             @endcan
 
-                            {{-- @can('website.pages', $website)
+                            @can('website.pages', $website)
                                 <a href="{{ route('pages', $website->id) }}" class="btn btn-sm btn-primary">Pages</a>
-                            @endcan --}}
-                            <a href="{{ $website->site_url }}" class="btn btn-sm btn-success" target="_blanck"><i
-                                    class="fas fa-eye"></i> Visualizar</a>
-                        </td>
-
-                        <td>
-                            @can('website.settings', $website)
-                                <form action="{{ route('websites.settings') }}" method="POST">
-                                    @csrf
-                                    <button class="btn btn-sm btn-dark" type="submit">Gerenciar</button>
-                                    <input type="hidden" name="website_id" value="{{ $website->id }}">
-                                </form>
                             @endcan
+
+                            <a href="{{ $website->site_url }}" class="btn btn-sm btn-success" target="_blanck"><i class="fas fa-eye"></i> Visualizar</a>
 
                         </td>
                     </tr>

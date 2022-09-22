@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.settings-website.theme')
 @section('content')
     <div class="container-fluid">
         @can('page_create')
@@ -32,7 +32,8 @@
                             @endcan
 
                             @can('page.delete', $page)
-                                <a href="{{ route('pages.delete', [$website->id, $page->id]) }}" onclick="return deleteSite('{{$page->name}}');" class="btn btn-sm btn-danger">Remove</a>
+                                <a href="{{ route('pages.delete', [$website->id, $page->id]) }}"
+                                    onclick="return deleteSite('{{ $page->name }}');" class="btn btn-sm btn-danger">Remove</a>
                             @endcan
                         </td>
                     </tr>
@@ -54,8 +55,8 @@
         });
 
         function deleteSite(title) {
-                if (!confirm(`Tem certeza que deseja remover a página ${title}?`))
-                    event.preventDefault();
-            }
+            if (!confirm(`Tem certeza que deseja remover a página ${title}?`))
+                event.preventDefault();
+        }
     </script>
 @stop

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\SiteSettings;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PageStoreUpdateRequest;
@@ -27,10 +27,9 @@ class PagesController extends Controller
         $data['breadcrumb'][]   = (object)['route' => '#', 'title' => 'Paginas do website ' . $website->title, 'active' => true];
         $data['list']           =  Page::where(['website_id' => $website->id])->get();
         $data['website']        = $website;
-        $data['web']            = true;
-        $data['webs']           = true;
+        $data['pag']            = true;
 
-        return view('admin.website.pages.pages', $data);
+        return view('settings-website.pages.index', $data);
     }
 
     public function create($website_id)
@@ -46,12 +45,10 @@ class PagesController extends Controller
         $data['breadcrumb'][]   = (object)['route' => route('pages', $website->id), 'title' => 'Páginas do website ' . $website->title];
         $data['breadcrumb'][]   = (object)['route' => '#', 'title' => 'Nova página', 'active' => true];
         $data['website']        = $website;
-        $data['web']            = true;
-        $data['webs']           = true;
-
+        $data['pag']            = true;
         $data['action']         = route('pages.store', $website->id);
 
-        return view('admin.website.pages.create', $data);
+        return view('settings-website.pages.create', $data);
     }
 
     public function edit($website_id, $pageid)
@@ -69,12 +66,11 @@ class PagesController extends Controller
         $data['breadcrumb'][]   = (object)['route' => '#', 'title' => 'Editar página ' . $page->name, 'active' => true];
         $data['website']        = $website;
         $data['page']           = $page;
-        $data['web']            = true;
-        $data['webs']           = true;
+        $data['pag']            = true;
 
         $data['action']         = route('pages.update', [$website->id, $page->id]);
 
-        return view('admin.website.pages.create', $data);
+        return view('settings-website.pages.create', $data);
     }
 
     public function store(PageStoreUpdateRequest $request, $website_id)

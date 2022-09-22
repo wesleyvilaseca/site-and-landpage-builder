@@ -23,7 +23,7 @@ function is_base64($s)
 
 function back_route_pagebuilder()
 {
-    $id = $_GET['site_id'];
-    $route = '/website/' . $id;
+    $id = @$_GET['site_id'] ? $_GET['site_id'] : 0;
+    $route = '/settings/website/' . $id;
     return $route;
 }
