@@ -7,10 +7,10 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="<?= getasset('themes/codevila/css/owl/owl.carousel.min.css') ?>" />
-    <link rel="stylesheet" href="<?= getasset('themes/codevila/css/owl/owl.theme.default.min.css') ?>" />
-    <link rel="stylesheet" href="<?= getasset('themes/codevila/css/magnific-popup.css') ?>" />
-    <link rel="stylesheet" href="<?= getasset('themes/codevila/css/main.css') ?>" />
+    <link rel="stylesheet" href="<?= getasset('assets-themes/codevila/css/owl/owl.carousel.min.css') ?>" />
+    <link rel="stylesheet" href="<?= getasset('assets-themes/codevila/css/owl/owl.theme.default.min.css') ?>" />
+    <link rel="stylesheet" href="<?= getasset('assets-themes/codevila/css/magnific-popup.css') ?>" />
+    <link rel="stylesheet" href="<?= getasset('assets-themes/codevila/css/main.css') ?>" />
 
     <title><?= $page->get('title'); ?></title>
     <script>
@@ -23,12 +23,12 @@
     <?= $body ?>
     <!--JS-->
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="<?= getasset('themes/codevila/js/bootstrap.min.js') ?>"></script>
+    <script src="<?= getasset('assets-themes/codevila/js/bootstrap.min.js') ?>"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="<?= getasset('themes/codevila/js/owl.carousel.min.js') ?>"></script>
-    <script src="<?= getasset('themes/codevila/js/isotope.pkgd.min.js') ?>"></script>
-    <script src="<?= getasset('themes/codevila/js/magnify/jquery.magnific-popup.min.js') ?>"></script>
-    <script src="<?= getasset('themes/codevila/js/main.js') ?>"></script>
+    <script src="<?= getasset('assets-themes/codevila/js/owl.carousel.min.js') ?>"></script>
+    <script src="<?= getasset('assets-themes/codevila/js/isotope.pkgd.min.js') ?>"></script>
+    <script src="<?= getasset('assets-themes/codevila/js/magnify/jquery.magnific-popup.min.js') ?>"></script>
+    <script src="<?= getasset('assets-themes/codevila/js/main.js') ?>"></script>
 </body>
 
 </html>
