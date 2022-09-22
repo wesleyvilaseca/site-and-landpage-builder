@@ -32,3 +32,8 @@ function get_site_url()
 {
     return url('/');
 }
+
+function getasset($route)
+{
+    return asset($route);
+}
