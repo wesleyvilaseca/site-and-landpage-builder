@@ -40,7 +40,7 @@
                             @endswitch
                         </td>
                         <td>
-                            @can('website.access', $website)
+                            @can('website.edit', $website)
                                 <a href="{{ route('websites.edit', $website->id) }}" class="btn btn-sm btn-warning">Edit</a>
                             @endcan
 

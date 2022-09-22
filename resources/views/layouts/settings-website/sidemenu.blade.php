@@ -18,10 +18,10 @@
                     <li class="{{ @$h_settings ? 'ativo' : '' }}">
                         <a href="{{ route('websites.settings') }}">
                             <i class="fas fa-chart-bar"></i>
-                            <span>Home</span>
+                            <span>Dashboard</span>
                         </a>
                     </li>
-                    @can('website')
+                    @can('pages_access')
                         <li class="{{ @$pag ? 'ativo' : '' }}">
                             <a href="{{ route('pages', session()->get('website_id')) }}">
                                 <i class="fas fa-chart-bar"></i>

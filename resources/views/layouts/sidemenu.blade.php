@@ -47,7 +47,7 @@
                         </li>
                     @endcan
 
-                    @can('website')
+                    @can('website_access')
                         <li class="sidebar-dropdown {{ @$web ? 'active_side' : '' }}">
                             <a>
                                 <i class="fas fa-layer-group"></i>
