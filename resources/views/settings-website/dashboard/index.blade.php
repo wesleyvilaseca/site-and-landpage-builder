@@ -1,4 +1,4 @@
-@extends('layouts.settings-website.theme')
+@extends('settings-website.layout.theme')
 @section('content')
 painel
 @stop

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\SiteSettings\DashboardController;
+use App\Http\Controllers\SiteSettings\MenuController;
 use App\Http\Controllers\SiteSettings\PageBuilderController;
 use App\Http\Controllers\SiteSettings\PagesController;
 use Illuminate\Support\Facades\Route;
@@ -8,6 +9,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth'])->group(function () {
     Route::group(['prefix' => 'settings'], function () {
         Route::post('/dashboard',            [DashboardController::class, 'index'])->name('websites.settings');
+
+        /**
+         * menus
+         */
+        Route::get('/menu',            [MenuController::class, 'index'])->name('menus');
 
         /**
          * pages admin

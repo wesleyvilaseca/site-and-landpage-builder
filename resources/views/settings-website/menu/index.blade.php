@@ -2,7 +2,7 @@
 @section('content')
     <div class="container-fluid">
         @can('page_create')
-            <a href="{{ route('pages.create', $website->id) }}" class="btn btn-primary btn-sm">ADD</a>
+            <a href="#" class="btn btn-primary btn-sm">ADD</a>
         @endcan
 
         <table class="table" id="customers-table">
@@ -13,26 +13,18 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($list as $page)
+                @forelse ($list as $menu)
                     <tr>
-                        <td>{{ $page->name }}
-                            @if ($page->homepage == 1)
-                                <i class="fas fa-star" style="color: #FFD700"></i>
-                            @endif
-                        </td>
+                        <td>{{ $menu->name }}</td>
                         <td>
-                            @can('page.edit', $page)
-                                <a href="{{ route('pages.edit', [$website->id, $page->id]) }}"
-                                    class="btn btn-sm btn-info">Editar</a>
-                            @endcan
-
+                            <a href="#" class="btn btn-sm btn-info">Editar</a>
                             @can('page.editlayout', $page)
-                                <a href="{{ route('pagebuilder.build', $page->id) }}?site_id={{ $website->id }}"
-                                    class="btn btn-sm btn-warning">Editar layout</a>
+                                <a href="#"
+                                    class="btn btn-sm btn-warning">Editar</a>
                             @endcan
 
                             @can('page.delete', $page)
-                                <a href="{{ route('pages.delete', [$website->id, $page->id]) }}"
+                                <a href="#"
                                     onclick="return deleteSite('{{ $page->name }}');" class="btn btn-sm btn-danger">Remove</a>
                             @endcan
                         </td>

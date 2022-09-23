@@ -21,6 +21,16 @@
                             <span>Dashboard</span>
                         </a>
                     </li>
+
+                    @can('menu_access')
+                        <li class="{{ @$men ? 'ativo' : '' }}">
+                            <a href="{{ route('menus') }}">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Menu</span>
+                            </a>
+                        </li>
+                    @endcan
+
                     @can('pages_access')
                         <li class="{{ @$pag ? 'ativo' : '' }}">
                             <a href="{{ route('pages', session()->get('website_id')) }}">

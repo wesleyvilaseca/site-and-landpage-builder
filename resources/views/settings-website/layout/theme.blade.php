@@ -35,12 +35,12 @@
             <i class="fas fa-bars"></i>
         </a>
 
-        @include('layouts.settings-website.topbar')
-        @include('layouts.settings-website.sidemenu')
+        @include('settings-website.layout.topbar')
+        @include('settings-website.layout..sidemenu')
 
         <main class="page-content">
             <div class="container-fluid">
-                @include('layouts.settings-website.alerts')
+                @include('settings-website.layout..alerts')
                 @if (@isset($toptitle))
                     <h5>{{ $toptitle }}</h5>
                 @endif
