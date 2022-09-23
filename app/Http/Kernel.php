@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'settings' => \App\Http\Middleware\SettingsSite::class
+        'settings' => \App\Http\Middleware\SettingsSite::class,
+        'remove.site.session' => \App\Http\Middleware\RemoveSiteFromSession::class
     ];
 }

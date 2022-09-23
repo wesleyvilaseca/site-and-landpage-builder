@@ -26,10 +26,18 @@ class WebsiteController extends Controller
             $page = Page::where(['website_id' => $website->id, 'route' => $uri])->first();
         }
 
+        if (!$page) return redirect()->route('notfound');
+
         $theme = new Theme(config('pagebuilder.theme'), config('pagebuilder.theme.active_theme'));
         $page = (new PageRepository)->findWithId($page->id);
         $pageRenderer = new PageRenderer($theme, $page);
         $html = $pageRenderer->render();
         return $html;
+    }
+
+    public function notfound(Request $request)
+    {
+        $data['title'] = 'Page not found';
+        return view('common.404.pagenotfound', $data);
     }
 }

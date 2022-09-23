@@ -19,7 +19,14 @@ class SettingsSite
      */
     public function handle(Request $request, Closure $next)
     {
-        $site_id = session()->get('website_id');
+        $site_id = null;
+
+        if (session()->get('website_id')) {
+            $site_id = session()->get('website_id');
+        } elseif ($request->website_id) {
+            $site_id =  $request->website_id;
+        }
+
         if (!$site_id) {
             Auth::logout();
             return Redirect::route('login');
@@ -31,6 +38,10 @@ class SettingsSite
             Auth::logout();
             return Redirect::route('login');
         }
+
+        if (!session()->get('website_id')) session()->put('website_id', $website->id);
+
+        if (!session()->get('sitename')) session()->put('sitename', $website->title);
 
         return $next($request);
     }

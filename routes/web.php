@@ -35,7 +35,7 @@ Route::post('/login', [LoginController::class, 'auth'])->name('login.auth');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 // Route::get('/',  [LoginController::class, 'index'])->name('inicio');
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'remove.site.session'])->group(function () {
     Route::get('/painel', [PainelController::class, 'index'])->name('painel');
 
     Route::get('/posts', [PostController::class, 'index'])->name('posts');
@@ -151,9 +151,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/website/{id}/edit',    [WebSiteController::class, 'edit'])->name('websites.edit');
     Route::post('/website/{id}/edit',   [WebSiteController::class, 'update'])->name('websites.update');
     Route::get('/website/{id}/delete', [WebSiteController::class, 'delete'])->name('websites.delete');
-
 });
-
 
 Route::get('/register',     [RegisterController::class, 'index'])->name('register');
 Route::post('/register',    [RegisterController::class, 'create'])->name('register.create');
@@ -165,8 +163,9 @@ Route::post('/register',    [RegisterController::class, 'create'])->name('regist
 
 Route::any('/busca', [SearchController::class, 'search']);
 
-Route::any('/', [ControllersWebsiteController::class, 'uri']);
-Route::any('/{uri}', [ControllersWebsiteController::class, 'uri']);
+Route::get('/notfound', [ControllersWebsiteController::class, 'notfound'])->name('notfound');
+Route::any('/',         [ControllersWebsiteController::class, 'uri']);
+Route::any('/{uri}',    [ControllersWebsiteController::class, 'uri']);
 
 // Route::get('/', function () {
 //     return view('welcome');

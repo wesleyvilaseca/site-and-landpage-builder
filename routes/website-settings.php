@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'settings'])->group(function () {
     Route::group(['prefix' => 'settings'], function () {
         Route::post('/dashboard',            [DashboardController::class, 'index'])->name('websites.settings');
+        Route::get('/dashboard',            [DashboardController::class, 'index'])->name('websites.settings');
 
         /**
          * menus
